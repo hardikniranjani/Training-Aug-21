@@ -16,15 +16,7 @@ SELECT CASE Department
 --5 Students Name, Address, City, DOB, Standard need to be inserted in the student table, need to fetch these result from 
 --json variable. and select output in the json format
 
-CREATE TABLE Students
-(
-    Name VARCHAR(40) NOT NULL,
-    ADDRESS VARCHAR(70) NOT NULL,
-    City VARCHAR(20) NOT NULL,
-    DOB DATE NOT NULL,
-    Standard TINYINT
-)
-
+--Declare Json Data
 DECLARE @StudentDetails NVARCHAR(MAX)
 SET @StudentDetails = 
 '[
@@ -65,6 +57,7 @@ SET @StudentDetails =
   }
 ]'
 
+SELECT ISJSON(@StudentDetails)
 
 INSERT INTO Students
 SELECT * FROM OPENJSON(@StudentDetails)
@@ -78,5 +71,15 @@ WITH
 )
 
 SELECT * FROM Students FOR JSON PATH 
-SELECT * FROM Students FOR JSON AUTO
 
+
+
+--Create Table
+CREATE TABLE Students
+(
+    Name VARCHAR(40) NOT NULL,
+    ADDRESS VARCHAR(70) NOT NULL,
+    City VARCHAR(20) NOT NULL,
+    DOB DATE NOT NULL,
+    Standard TINYINT
+)

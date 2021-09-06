@@ -1,19 +1,19 @@
 --1. Write a query to display the names (first_name, last_name) and salary for all employees whose salary is not in the range $10,000 through $15,000.
-Select CONCAT(FirstName,' ',LastName) as [Name], Salary 
-			from Employees
+Select CONCAT(FirstName,' ',LastName) AS [Name], Salary 
+			FROM Employees
 			WHERE Salary < 10000 OR Salary> 15000 ORDER BY Salary DESC
  
 
 --2. Write a query to display the names (first_name, last_name) and department ID of all employees in departments 30 or 100 in ascending alphabetical order by department ID.
-SELECT CONCAT(FirstName,' ',LastName) as [Name], DepartmentID  
+SELECT CONCAT(FirstName,' ',LastName) AS [Name], DepartmentID  
 			FROM Employees
 			WHERE DepartmentID = 30 OR DepartmentID = 100 
 			ORDER BY DepartmentID, [Name] ASC			
 
 
 --3. Write a query to display the names (first_name, last_name) and salary for all employees whose salary is not in the range $10,000 through $15,000 and are in department 30 or 100.
-Select CONCAT(FirstName,' ',LastName) as [Name], Salary, DepartmentID
-			from Employees
+Select CONCAT(FirstName,' ',LastName) AS [Name], Salary, DepartmentID
+			FROM Employees
 			WHERE (Salary < 10000 OR Salary> 15000) AND (DepartmentID = 30 OR DepartmentID = 100) 
 			
 
@@ -30,8 +30,8 @@ SELECT FirstName FROM Employees
 --6. Write a query to display the last name, job, and salary for all employees whose job is that of a Programmer or a 
 --Shipping Clerk, and whose salary is not equal to $4,500, $10,000, or $15,000.
 
-Select LastName, JobId as Job, Salary 
-			from Employees
+SELECT LastName, JobId AS Job, Salary 
+			FROM Employees
 			Where (JobId = 'IT_PROG' OR JobId ='SH_CLERK') AND (Salary<>4500 OR Salary<>10000 OR Salary<>15000)
 
 --7. Write a query to display the last names of employees whose names have exactly 6 characters.
@@ -43,10 +43,10 @@ SELECT LastName FROM Employees
 				WHERE LastName LIKE '__e%'
 
 --9. Write a query to display the jobs/designations available in the employees table.
-SELECT DISTINCT(JobId) as [jobs/designations] FROM Employees ORDER BY JobId
+SELECT DISTINCT(JobId) AS [jobs/designations] FROM Employees ORDER BY JobId
 
 --10. Write a query to display the names (first_name, last_name), salary and PF (15% of salary) of all employees.
-SELECT CONCAT(FirstName,' ',LastName) as [Name], Salary, (Salary*0.15) as PF  FROM Employees
+SELECT CONCAT(FirstName,' ',LastName) AS [Name], Salary, (Salary*0.15) AS PF  FROM Employees
 
 
 --11. Write a query to select all record from employees where last name in 'BLAKE', 'SCOTT', 'KING' and 'FORD'.

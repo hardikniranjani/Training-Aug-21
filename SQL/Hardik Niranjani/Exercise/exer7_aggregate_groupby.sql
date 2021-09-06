@@ -30,12 +30,12 @@ SELECT Count(EmployeeID) AS [Number of Employee], JobId
 			ORDER BY [Number of Employee] DESC
 
 --8. Write a query to get the difference between the highest and lowest salaries.
-SELECT (MAX(Salary) - MIN(Salary)) as [Salary] FROM Employees
+SELECT (MAX(Salary) - MIN(Salary)) AS [Salary] FROM Employees
 
 
 --9. Write a query to find the manager ID and the salary of the lowest-paid employee for that manager.
-DECLARE @temp int 
-set @temp = (select min(Salary) from Employees)
+DECLARE @temp INT 
+SET @temp = (SELECT min(Salary) FROM Employees)
 SELECT ManagerID, Salary FROM Employees
 						 WHERE Salary = @temp 
 
@@ -54,15 +54,15 @@ SELECT AVG(Salary) AS [Salary], JobId
 
 
 --12. Write a query to get the total salary, maximum, minimum, average salary of employees (job ID wise), for department ID 90 only.
-SELECT SUM(Salary) as [Total Salary], MAX(Salary) as [Max Salary],
-	   MIN(Salary) as [Min Salary], AVG(Salary) as [Avg Salary], JobId
+SELECT SUM(Salary) AS [Total Salary], MAX(Salary) AS [Max Salary],
+	   MIN(Salary) AS [Min Salary], AVG(Salary) AS [Avg Salary], JobId
 	   FROM Employees
 	   WHERE  DepartmentID = 90
 	   GROUP BY JobId
 
 
 --13. Write a query to get the job ID and maximum salary of the employees where maximum salary is greater than or equal to $4000.
-SELECT JobId, MAX(Salary) as [Salary] 
+SELECT JobId, MAX(Salary) AS [Salary] 
 			FROM Employees
 			WHERE [Salary] >=4000
 			GROUP BY JobId
