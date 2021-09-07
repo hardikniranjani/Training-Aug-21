@@ -74,7 +74,7 @@ EXEC spGetEmployeesDetails
 sp_helptext spGetEmployeesDetails
 
 ALTER PROCEDURE spGetEmployeesDetails
-WITH Encryption
+WITH ENCRYPTION
 AS 
 BEGIN
 	SELECT EmployeeID, FirstName, LastName,JobId,Salary,HireDate 
