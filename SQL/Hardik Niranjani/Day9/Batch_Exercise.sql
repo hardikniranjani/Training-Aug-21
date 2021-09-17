@@ -2,8 +2,8 @@
 
 --If-Else Statement
 
-IF DATENAME(weekday, GETDATE()) IN (N'Saturday', N'Sunday') 
-       SELECT 'Weekend'
+IF DATENAME(weekday, GETDATE()) IN ('Saturday', 'Sunday') 
+       SELECT 'Weekend' AS [Weekend / Weekday]
 ELSE 
        SELECT 'Weekday' AS [Weekend / Weekday]
 

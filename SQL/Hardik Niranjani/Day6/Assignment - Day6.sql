@@ -15,7 +15,7 @@ Select * from Employee
 --Find Salary of the employee whose salary is more than Roy Salary
 
 Select * from Employee 
-		 where SALARY>ALL (Select SALARY from Employee Where FIRST_NAME = 'Roy')
+		 where SALARY>(Select SALARY from Employee Where FIRST_NAME = 'Roy')
 
 
 ---------------------------------------------------------------------------------------------------------------

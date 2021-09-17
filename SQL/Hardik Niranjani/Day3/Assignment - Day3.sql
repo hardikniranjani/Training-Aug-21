@@ -53,8 +53,7 @@ SELECT * FROM Employees
 
 --(7)--
 --Write a query to calculate the age in year.
-
-SELECT HireDate, DATEDIFF(DAY, HireDate, GetDate())/365 "Age" FROM Employees
+SELECT HireDate, DATEDIFF(YEAR, HireDate, GetDate()) "Age" FROM Employees
 
 
 --(8)--

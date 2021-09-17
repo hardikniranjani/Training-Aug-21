@@ -102,6 +102,7 @@ SET @json = '{
 }'
 
 SELECT ISJSON(@json)
+SELECT @json
 
 SET @json = JSON_MODIFY(@json, '$.info.address[1].town', 'London')
 SELECT modifiedJson = @json

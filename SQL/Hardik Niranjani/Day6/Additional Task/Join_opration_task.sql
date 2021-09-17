@@ -63,7 +63,9 @@ Select d.Cname from Deposit as d
 --(6)--
 --Count the Number of Customers Living in the City where Branch is Located
 
-	Select count(c.CNAME) as [Number of Customers] from CUSTOMER as c
-			Where c.CITY IN (Select b.CITY from BRANCH as b) Group by c.CITY
+	Select count(c.CNAME) as [Number of Customers],c.CITY
+			from CUSTOMER as c
+			Where c.CITY IN (Select b.CITY from BRANCH as b) 
+			Group by c.CITY
 
 			   

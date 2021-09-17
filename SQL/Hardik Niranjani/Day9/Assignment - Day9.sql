@@ -1,5 +1,4 @@
 
-
 --Create a batch Select Banking as ‘Bank Dept’, Insurance as ‘Insurance Dept’ and Services as ‘Services Dept’ 
 --from employee table
 
