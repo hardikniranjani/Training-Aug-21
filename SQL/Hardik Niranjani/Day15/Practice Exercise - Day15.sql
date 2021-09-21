@@ -56,35 +56,7 @@ SELECT * FROM Person.ContactType
 
 
 
--- Isolation Level
 
-SET TRANSACTION ISOLATION LEVEL
-READ COMMITTED
-BEGIN TRANSACTION Tran_Isolation
-
-BEGIN TRY 
-	UPDATE Person.ContactType
-	SET [Name] = 'Sales RP'
-	WHERE ContactTypeID =20
-	
-	 Waitfor delay '00:00:15'
-
-	UPDATE Person.ContactType
-	SET ModifiedDate = 'Monday'
-	WHERE ContactTypeID = 20
-
-COMMIT TRANSACTION Tran_Isolation
-SELECT 'Transaction Executed Successfully' AS [Massage]
-
-END TRY
-
-BEGIN CATCH
-	ROLLBACK TRANSACTION Tran_Isolation
-	SELECT 'You Update with wrong datatype' AS [Error Massage]
-	
-END CATCH
-
-SELECT * FROM Person.ContactType
 
 
 
