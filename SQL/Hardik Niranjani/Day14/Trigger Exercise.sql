@@ -84,19 +84,3 @@ UPDATE TriggerEmployee
  SELECT * FROM TriggerEmployee
  SELECT * FROM tblEmployeeAudit
 
-
-
- -- =====================================================
-
--- INSTEAD OF TRIGGER ~~
-
-CREATE TRIGGER tr_tblEmployee_ForINSTEAD_OF
-ON TriggerEmployee
-INSTEAD OF INSERT
-AS
-BEGIN
-	SELECT * FROM inserted
-	SELECT * FROM deleted
-END
-
-SELECT * FROM TriggerEmployee
