@@ -143,10 +143,10 @@ showBookingData();
 //************************************************************************************** 
 //************************************************************************************** 
 //************************************************************************************** 
-//************************************************************************************** 
+//**************************************************************************************  
 
 
-//(1)*** Provide the list of restaurants in the country so that the user can choose accordingly.
+//Provide the list of restaurants in the country so that the user can choose accordingly.
 
 var restaurantCountry:Restaurant[] = [];
 function addRestaurantInCountry(id:number, rName:string, Tables:number, country:string){
@@ -174,8 +174,40 @@ function GuestCount(RestaurantName:string){
     restaurant.filter((res)=>{
         if(res.RestaurantName == RestaurantName){
             bookingsData.filter((book)=>{
-                
+                tableData.filter((table)=>{
+                    if(book.TableId == table.Id && table.RestaurantName == RestaurantName){
+                        totalGuestCount.push({
+                                             "Booked Username":book.UserName,
+                                             "RestaurantName":res.RestaurantName,
+                                             "Number of guests":table.TableCapacity, 
+                                             "tableId": table.Id
+                                            })
+                    }
+                })
             })
         }
     })
+    console.log("TotalGuestCount");
+    console.log(totalGuestCount);
+    console.log("\n\n");
 }
+
+
+GuestCount("The Waterside Inn")
+
+
+// Table reservation can be done up to one month in advance.
+
+function bookingTables(id:number, restId:number, TId:number, Booking:Date, UId:number, UName:string) {
+    var month = Booking.getMonth() - new Date().getMonth()
+        if(month<=1 || month!<0){
+            addBookingData(id,restId,TId,Booking,UId,UName);
+        }
+        else{
+            console.log("We can adavance booking for a month only")
+        }
+}
+
+bookingTables(6,8,8,new Date("12/01/2021"),7,"Rishabh");
+showBookingData();
+

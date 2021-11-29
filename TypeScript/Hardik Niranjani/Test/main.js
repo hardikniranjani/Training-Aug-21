@@ -98,8 +98,8 @@ showBookingData();
 //************************************************************************************** 
 //************************************************************************************** 
 //************************************************************************************** 
-//************************************************************************************** 
-//(1)*** Provide the list of restaurants in the country so that the user can choose accordingly.
+//**************************************************************************************  
+//Provide the list of restaurants in the country so that the user can choose accordingly.
 var restaurantCountry = [];
 function addRestaurantInCountry(id, rName, Tables, country) {
     restaurantCountry.push({ Id: id, RestaurantName: rName, NumberOfTables: Tables, Country: country });
@@ -115,4 +115,39 @@ function restaurantInCountry(countryName) {
     console.log("\n\n");
 }
 restaurantInCountry("India");
-//(2)** Provide the list of tables available for online reservation at different dining rooms in the restaurant.
+// Mention the number of guests that can be accommodated on the particular table.
+var totalGuestCount = [];
+function GuestCount(RestaurantName) {
+    restaurant.filter(function (res) {
+        if (res.RestaurantName == RestaurantName) {
+            bookingsData.filter(function (book) {
+                tableData.filter(function (table) {
+                    if (book.TableId == table.Id && table.RestaurantName == RestaurantName) {
+                        totalGuestCount.push({
+                            "Booked Username": book.UserName,
+                            "RestaurantName": res.RestaurantName,
+                            "Number of guests": table.TableCapacity,
+                            "tableId": table.Id
+                        });
+                    }
+                });
+            });
+        }
+    });
+    console.log("TotalGuestCount");
+    console.log(totalGuestCount);
+    console.log("\n\n");
+}
+GuestCount("The Waterside Inn");
+// Table reservation can be done up to one month in advance.
+function bookingTables(id, restId, TId, Booking, UId, UName) {
+    var month = Booking.getMonth() - new Date().getMonth();
+    if (month <= 1 || month < 0) {
+        addBookingData(id, restId, TId, Booking, UId, UName);
+    }
+    else {
+        console.log("We can adavance booking for a month only");
+    }
+}
+bookingTables(6, 8, 8, new Date("12/01/2021"), 7, "Rishabh");
+showBookingData();
